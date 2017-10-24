@@ -10,8 +10,10 @@
 	<!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 	
-  <title>Tower's webslight</title>
+  <title>Tower Hufham</title>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  
+  <link rel="shortcut icon" href="favicon.ico"></link>
   
   <style>
     body {
@@ -40,7 +42,7 @@
   </style>
 </head>
 
-<body background="img/pool_bg.png">
+<body background="img/pool_bg.jpg">
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -53,7 +55,7 @@
 <div class="container">
   <div class="row vertical-align">
 	<div class="col-sm-6">
-	  <p>Hey, so this is my website. I don't really know what I'm doing, but I hope you like it anyway.
+	  <p>Welcome to my website. I don't really know what I'm doing, but I hope you like it anyway.
 	  Take a seat, relax, and enjoy this procedurally generated artwork, on the house.</p>
 	</div>
 	<div class="col-sm-6">
@@ -61,14 +63,6 @@
 	</div>
   </div>
 </div>
-
-<!-- <div class="container"> -->
-  <!-- <div class="row vertical-align"> -->
-	  <!-- <p>Hey, so this is my website. I don't really know what I'm doing, but I hope you like it anyway. -->
-	  <!-- Take a seat, relax, and enjoy this procedurally generated digimon, on the house.</p> -->
-	<!-- </div> -->
-  <!-- </div> -->
-<!-- </div> -->
 
 <div class="container">
   <!-- <h3>Links to stuff.</h3> -->
@@ -98,6 +92,27 @@
 	  <p><br/>Digimon</p>
     </div>
   </div>
+  
+  <div class="row vertical-align">
+	<div class="col-sm-4">
+      <a href="https://towerhufham.itch.io/chromawarp" class="btn btn-link">
+	    <img src="img/chromawarp_icon.png" class="img-responsive center-block">
+	  </a>
+	  <p><br/>Chromawarp</p>
+    </div>
+    <div class="col-sm-4">
+      <a href="https://gamejolt.com/@tower07" class="btn btn-link">
+	    <img src="img/game_icon.png" class="img-responsive center-block">
+	  </a>
+	  <p><br/>Game Jolt</p>
+    </div>
+	<div class="col-sm-4">
+      <a href="https://sourceforge.net/projects/nethackmodern/" class="btn btn-link">
+	    <img src="img/lorc_cursed_star.png" class="img-responsive center-block">
+	  </a>
+	  <p><br/>Nethack Modern</p>
+    </div>
+  </div>
 </div>
 
 </body>
@@ -106,26 +121,7 @@
 <script type="text/javascript" src="noisejs-master/perlin.js"></script>
 
 <script>
-<!-- function getBackground() { -->
-    <!-- var d = new Date(); -->
-    <!-- var n = d.getDay(); -->
-	<!-- if (n === 1) { -->
-	  <!-- document.body.style.backgroundImage = "url('http://i.imgur.com/QePE6EO.png')"; -->
-	<!-- } else if (n === 2) { -->
-	  <!-- document.body.style.backgroundImage = "url('http://i.imgur.com/2gzMHJS.png')"; -->
-	<!-- } else if (n === 3) { -->
-	  <!-- document.body.style.backgroundImage = "url('http://i.imgur.com/a2hmJ5T.png')"; -->
-	<!-- } else if (n === 4) { -->
-	  <!-- document.body.style.backgroundImage = "url('http://i.imgur.com/ss5dSVD.png')"; -->
-	<!-- } else if (n === 5) { -->
-	  <!-- document.body.style.backgroundImage = "url('http://i.imgur.com/XJhyMQd.png')"; -->
-	<!-- } else if (n === 6) { -->
-	  <!-- document.body.style.backgroundImage = "url('http://i.imgur.com/RelFIeb.png')"; -->
-	<!-- } else if (n === 0) { -->
-	  <!-- document.body.style.backgroundImage = "url('http://i.imgur.com/DAF0h32.png')"; -->
-	<!-- } -->
-  <!-- }  -->
-  
+
 var canvas = document.getElementById("artCanvas");
 var ctx = canvas.getContext("2d");
 
@@ -165,17 +161,9 @@ function randomArt() {
 	var g1_scale = randInt(min_scale, max_scale)
 	var b1_scale = randInt(min_scale, max_scale)
 
-	var r1_offset = randInt(0, 1000000)
-	var g1_offset = randInt(0, 1000000)
-	var b1_offset = randInt(0, 1000000)
-
 	var r2_scale = randInt(min_scale, max_scale)
 	var g2_scale = randInt(min_scale, max_scale)
 	var b2_scale = randInt(min_scale, max_scale)
-
-	var r2_offset = randInt(0, 1000000)
-	var g2_offset = randInt(0, 1000000)
-	var b2_offset = randInt(0, 1000000)
 
 	for (var x = 0; x < pixels; x++) {
 	 for (var y = 0; y < pixels; y++) {
