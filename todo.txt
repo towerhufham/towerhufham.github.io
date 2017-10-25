@@ -1,9 +1,0 @@
-fix typo on digimon page
-make both pages have more different text
-maybe make abs(n) -> -(abs(n)) to that the generative arts are more white than black
-add more stuff to front page (nethack modern, gamejolt, etc.)
-better attribution
-optimize background image
-remove unecessary code from art gen
-add favicon
-give proper title

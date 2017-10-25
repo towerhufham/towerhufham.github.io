@@ -1,0 +1,20 @@
+CACHE MANIFEST
+#v2
+
+CACHE:
+index.html
+favicon.ico
+css/bootstrap.min.css
+js/bootstrap.min.js
+img/back_icon.png
+img/chromawarp_icon.png
+img/code_logo.png
+img/digimon_logo_crunchy.png
+img/game_icon.png
+img/lorc_cursed_star.png
+img/pool_bg.jpg
+img/qubitforest_logo.png
+img/twitter_logo.png
+
+NETWORK:
+*
