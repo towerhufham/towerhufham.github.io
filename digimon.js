@@ -7,9 +7,6 @@ function randInt(min, max) {
 
 function proceduralDigimon() {
 	
-	ctx.fillStyle="#FFFFFF";
-	ctx.fillRect(0,0,324,324);
-
 	function drawPixel(x, y, color="black") {
 		if (color === "black") {
 			ctx.fillStyle="#000000";
@@ -23,25 +20,7 @@ function proceduralDigimon() {
 		ctx.fillRect(x*18, y*18, 18, 18);
 	}
 
-	//functions initDigimon() and loadDigimon() are located in digimon_loader.js
-
-	function drawDigimon(digimon) {
-		for (var i = 0; i < 18; i++) 
-		{
-			for (var j = 0; j < 18; j++) 
-			{
-				if (digimon[i][j] === 1) {
-					drawPixel(i,j);
-				}
-				else if (digimon[i][j] === "red") {
-					drawPixel(i,j,color="red");
-				}
-				else if (digimon[i][j] === "blue") {
-					drawPixel(i,j,color="blue");
-				}
-			}
-		}
-	}
+	//note: functions initDigimon() and loadDigimon() are located in digimon_loader.js
 
 	function getRandomWhitePixel(digimon) {
 		var x = randInt(0,17);
@@ -54,62 +33,6 @@ function proceduralDigimon() {
 		white.x = x;
 		white.y = y;
 		return white;
-	}
-
-	function chooseColorByBoundary(digimon, x, y) {
-		var rcount = 0;
-		var bcount = 0;
-		
-		//get adjacent pixels
-		if (x > 0) {
-			if (digimon[x-1][y] === "red") {
-				rcount++;
-			} else if (digimon[x-1][y] === "blue") {
-				bcount++;
-			}
-		}
-	  
-		if (x < 17) {
-			if (digimon[x+1][y] === "red") {
-				rcount++;
-			} else if (digimon[x+1][y] === "blue") {
-				bcount++;
-			}
-		}
-	  
-		if (y > 0) {
-			if (digimon[x][y-1] === "red") {
-				rcount++;
-			} else if (digimon[x][y-1] === "blue") {
-				bcount++;
-			}
-		}
-	  
-		if (y < 17) {
-			if (digimon[x][y-1] === "red") {
-				rcount++;
-			} else if (digimon[x][y+1] === "blue") {
-				bcount++;
-			}
-		}
-	  
-		//if there are no adjacent colored pixels, wait until there are
-		if (rcount === 0 && bcount === 0) {
-			return null;
-		}
-		  
-		//if there is a majority, return that
-		else 
-		{
-			if (rcount > bcount) {return "red";}
-			else if (rcount < bcount) {return "blue";}
-		
-			// if it's a tie, choose randomly
-			else if (rcount === bcount) {
-				if (randInt(0,1) === 0) {return "red";}
-				else {return "blue";}
-			}
-		}
 	}
 
 	function generateDigimon(mon1, mon2, SEEDS=2) {
@@ -191,6 +114,84 @@ function proceduralDigimon() {
 	  
 		return newMon;
 	}
+	
+	function chooseColorByBoundary(digimon, x, y) {
+		var rcount = 0;
+		var bcount = 0;
+		
+		//get adjacent pixels
+		if (x > 0) {
+			if (digimon[x-1][y] === "red") {
+				rcount++;
+			} else if (digimon[x-1][y] === "blue") {
+				bcount++;
+			}
+		}
+	  
+		if (x < 17) {
+			if (digimon[x+1][y] === "red") {
+				rcount++;
+			} else if (digimon[x+1][y] === "blue") {
+				bcount++;
+			}
+		}
+	  
+		if (y > 0) {
+			if (digimon[x][y-1] === "red") {
+				rcount++;
+			} else if (digimon[x][y-1] === "blue") {
+				bcount++;
+			}
+		}
+	  
+		if (y < 17) {
+			if (digimon[x][y-1] === "red") {
+				rcount++;
+			} else if (digimon[x][y+1] === "blue") {
+				bcount++;
+			}
+		}
+	  
+		//if there are no adjacent colored pixels, wait until there are
+		if (rcount === 0 && bcount === 0) {
+			return null;
+		}
+		  
+		//if there is a majority, return that
+		else 
+		{
+			if (rcount > bcount) {return "red";}
+			else if (rcount < bcount) {return "blue";}
+		
+			// if it's a tie, choose randomly
+			else if (rcount === bcount) {
+				if (randInt(0,1) === 0) {return "red";}
+				else {return "blue";}
+			}
+		}
+	}
+	
+	function drawDigimon(digimon) {
+		for (var i = 0; i < 18; i++) 
+		{
+			for (var j = 0; j < 18; j++) 
+			{
+				if (digimon[i][j] === 1) {
+					drawPixel(i,j);
+				}
+				else if (digimon[i][j] === "red") {
+					drawPixel(i,j,color="red");
+				}
+				else if (digimon[i][j] === "blue") {
+					drawPixel(i,j,color="blue");
+				}
+			}
+		}
+	}
+	
+	//generate the digimon
+	ctx.fillStyle="#FFFFFF";
+	ctx.fillRect(0,0,324,324);
 	
 	var numberOfMons = 44;
 	seed1 = randInt(0,numberOfMons);
