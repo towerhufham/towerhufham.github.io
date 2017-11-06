@@ -92,18 +92,18 @@ function proceduralDigimon() {
 	  
 		//if there are no adjacent colored pixels, wait until there are
 		if (rcount === 0 && bcount === 0) {
-			return null
+			return null;
 		}
 		  
 		//if there is a majority, return that
 		else {
-			if (rcount > bcount) {return "red"}
-			else if (rcount < bcount) {return "blue"}
+			if (rcount > bcount) {return "red";}
+			else if (rcount < bcount) {return "blue";}
 		
 			// if it's a tie, choose randomly
 			else if (rcount === bcount) {
-				if (randInt(0,1) === 0) {return "red"}
-				else {return "blue"}
+				if (randInt(0,1) === 0) {return "red";}
+				else {return "blue";}
 			}
 		}
 	}
@@ -123,7 +123,7 @@ function proceduralDigimon() {
 		  }
 		}
 	  }
-	  return newMon
+	  return newMon;
 	}
 
 	function generateDigimon(mon1, mon2) {
@@ -170,10 +170,10 @@ function proceduralDigimon() {
 						var c = chooseColorByBoundary(newMon, x, y);
 						if (c != null) {
 							newpixels.push([x, y, c]);
-							}
 						}
 					}
 				}
+			}
 		
 			//actually change the pixels
 			for (var i = 0, len = newpixels.length; i < len; i++) {
@@ -213,6 +213,6 @@ function proceduralDigimon() {
 
 	mon1 = loadDigimon(seed1);
 	mon2 = loadDigimon(seed2);
-	newMon = generateDigimon(mon1, mon2)
+	newMon = generateDigimon(mon1, mon2);
 	drawDigimon(newMon);
 }
