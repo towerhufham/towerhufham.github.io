@@ -50,7 +50,10 @@ function proceduralDigimon() {
 			var x = randInt(0,17);
 			var y = randInt(0,17);
 		}
-		return [x,y];
+		var white = {};
+		white.x = x;
+		white.y = y;
+		return white;
 	}
 
 	function chooseColorByBoundary(digimon, x, y) {
@@ -96,7 +99,8 @@ function proceduralDigimon() {
 		}
 		  
 		//if there is a majority, return that
-		else {
+		else 
+		{
 			if (rcount > bcount) {return "red";}
 			else if (rcount < bcount) {return "blue";}
 		
@@ -108,31 +112,12 @@ function proceduralDigimon() {
 		}
 	}
 
-	function generateDigimonSeeds(mon1, mon2) {
+	function generateDigimon(mon1, mon2, SEEDS=2) {
 		// init
-		var newMon = initDigimon();
-	  
-	  //find black pixels common to both sourcemons
-		for (var y = 0; y < 18; y++)
-	  {
-		for (var x = 0; x < 18; x++)
-		{
-			if (mon1[x][y] === mon2[x][y]) 
-		  {
-			newMon[x][y] = mon1[x][y];
-		  }
-		}
-	  }
-	  return newMon;
-	}
-
-	function generateDigimon(mon1, mon2) {
-		// init
-		var newMon = initDigimon();
-		var SEEDS = 3;
 		var completed = false;
+		var newMon = initDigimon();
 	  
-		//find black pixels common to both sourcemons
+		//find pixels common to both sourcemons
 		for (var y = 0; y < 18; y++) {
 			for (var x = 0; x < 18; x++) {
 				if (mon1[x][y] === mon2[x][y]) {
@@ -145,9 +130,9 @@ function proceduralDigimon() {
 		for (var i = 0; i < SEEDS; i++)
 		{
 			var white = getRandomWhitePixel(newMon);
-			newMon[white[0]][white[1]] = "red";
+			newMon[white.x][white.y] = "red";
 			var white = getRandomWhitePixel(newMon);
-			newMon[white[0]][white[1]] = "blue";
+			newMon[white.x][white.y] = "blue";
 		}
 	  
 		//debug:
@@ -169,7 +154,11 @@ function proceduralDigimon() {
 						wcount++;
 						var c = chooseColorByBoundary(newMon, x, y);
 						if (c != null) {
-							newpixels.push([x, y, c]);
+							var pix = {}
+							pix.x = x;
+							pix.y = y;
+							pix.c = c;
+							newpixels.push(pix);
 						}
 					}
 				}
@@ -178,7 +167,7 @@ function proceduralDigimon() {
 			//actually change the pixels
 			for (var i = 0, len = newpixels.length; i < len; i++) {
 				var thispix = newpixels[i];
-				newMon[thispix[0]][thispix[1]] = thispix[2];
+				newMon[thispix.x][thispix.y] = thispix.c;
 			}
 		
 			//end if all white is gone
@@ -200,15 +189,16 @@ function proceduralDigimon() {
 			}
 		}
 	  
-	  return newMon;
+		return newMon;
 	}
-
-	seed1 = randInt(0,44);
-	seed2 = randInt(0,44);
+	
+	var numberOfMons = 44;
+	seed1 = randInt(0,numberOfMons);
+	seed2 = randInt(0,numberOfMons);
 
 	while (seed1 === seed2) {
-		seed1 = randInt(0,44);
-		seed2 = randInt(0,44);
+		seed1 = randInt(0,numberOfMons);
+		seed2 = randInt(0,numberOfMons);
 	}
 
 	mon1 = loadDigimon(seed1);
