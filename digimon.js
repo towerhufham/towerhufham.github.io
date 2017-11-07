@@ -20,6 +20,25 @@ function proceduralDigimon() {
 		ctx.fillRect(x*18, y*18, 18, 18);
 	}
 
+	function distance(x0, y0, x1, y1) {
+		return Math.sqrt((x0-x1)**2 + (y0-y1)**2);
+	}
+	
+	function closestSeed(px, py, seeds) {
+		closest = {};
+		closest.seed = null;
+		closest.dist = 999;
+		for (var i = 0; i < seeds.length; i++) {
+			var seed = seeds[i]
+			var d = distance(seed.x, seed.y, px, py);
+			if (d < closest.dist) {
+				closest.seed = seed;
+				closest.dist = d;
+			}
+		}
+		return closest;
+	}
+	
 	//note: functions initDigimon() and loadDigimon() are located in digimon_loader.js
 
 	function getRandomWhitePixel(digimon) {
