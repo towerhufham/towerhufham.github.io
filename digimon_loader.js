@@ -1,9 +1,9 @@
-function initDigimon() {
-	var digimon = new Array(18);
-	for (var i = 0; i < 18; i++) 
+function initMon(size) {
+	var digimon = new Array(size);
+	for (var i = 0; i < size; i++) 
 		{
-		digimon[i] = new Array(18);
-		for (var j = 0; j < 18; j++) 
+		digimon[i] = new Array(size);
+		for (var j = 0; j < size; j++) 
 		{
 		  digimon[i][j] = 0;
 		}
@@ -66,7 +66,7 @@ function getDigimonData(n) {
 
 function loadDigimon(n) {
 	var data = getDigimonData(n);
-	var digimon = initDigimon();
+	var digimon = initMon(18);
 	var count = 0;
 	for (var y = 0; y < 18; y++) 
 	{
