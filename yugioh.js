@@ -69,21 +69,32 @@ function download(filename, text) {
 function init() {
 	// var content = createDeckContent();
 	// download("random-deck.ydk", content);
+	
 	// testing
-	getCardList(function(cards) {
-		getCard(randomCardName(cards), function(card){console.log(card);});
-		list = [];
-		for (var i = 0; i < 40; i++) {
-			// randomMainDeckID(cards, function(id){console.log(id);});
-			randomMainDeckID(cards, function(id){list.push(id);});
-		}
+	// getCardList(function(cards) {
+		// getCard(randomCardName(cards), function(card){console.log(card);});
+		// list = [];
+		// for (var i = 0; i < 40; i++) {
+			// randomMainDeckID(cards, function(id){list.push(id);});
+		// }
 		
-		var timeout = setInterval(function() {
-			if(list.length >= 40) {
-				clearInterval(timeout); 
-				console.log(list);
-			} 
-		}, 100);
-		//setTimeout(function() {console.log(list);}, 2000);
-	});
+		// var timeout = setInterval(function() {
+			// if(list.length >= 40) {
+				// clearInterval(timeout); 
+				// console.log(list);
+			// } 
+		// }, 100);
+	// });
+	
+	//async kiddie-pool
+	function getTextSlowly(text) {
+		return new Promise((resolve, reject) => {
+			setTimeout(function() {resolve(text+"...");}, 2000);
+		});
+	}
+	async function doIt() {
+		var p = await getTextSlowly("did it work?");
+		console.log(p);
+	}
+	doIt();
 }
