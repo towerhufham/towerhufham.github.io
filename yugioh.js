@@ -56,23 +56,15 @@ async function createDeckContent() {
 	return content;
 }
 
-// from https://ourcodeworld.com/articles/read/189/how-to-create-a-file-and-generate-a-download-with-javascript-in-the-browser-without-a-server
-function download(filename, text) {
-	var element = document.createElement('a');
+function setDownloadHref(filename, text) {
+	var element = document.getElementById("deck-button");
 	element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
 	element.setAttribute('download', filename);
-
-	element.style.display = 'none';
-	document.body.appendChild(element);
-
-	element.click();
-
-	document.body.removeChild(element);
 }
 
 function init() {
 	createDeckContent().then((content) => {
 		console.log(content);
-		download("random-deck.ydk", content);
+		setDownloadHref("random-deck.ydk", content);
 	});
 }
