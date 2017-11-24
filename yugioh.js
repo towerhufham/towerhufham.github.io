@@ -58,8 +58,10 @@ async function createDeckContent() {
 
 function setDownloadHref(filename, text) {
 	var element = document.getElementById("deck-button");
-	element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-	element.setAttribute('download', filename);
+	element.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(text));
+	element.setAttribute("download", filename);
+	var img = document.getElementById("download-img");
+	img.src = "img/yugioh_download.png";
 }
 
 function init() {
