@@ -1,4 +1,5 @@
 function randInt(min, max) {
+	//todo: implement seeding
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
@@ -47,11 +48,22 @@ function getCard(name) {
 }
 
 async function createDeckContent() {
+	//init
 	var cards = await getCardList();
-	var content = "#created by random chance at towerhufham.com\n#main\n";
+	var decklist = new Array(40).fill(null);
+	
+	//fill decklist with ids
 	for (var i = 0; i < 40; i++) {
 		var id = await randomMainDeckID(cards);
-		content += id + "\n";
+		decklist[i] = id;
+	}
+	
+	//TODO: card requests
+	
+	//create content string
+	var content = "#created by random chance at towerhufham.com\n#main\n";
+	for (var i = 0; i < 40; i++) {
+		content += decklist[i] + "\n";
 	}
 	return content;
 }
