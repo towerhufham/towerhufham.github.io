@@ -6,24 +6,12 @@ function randomCardName(cards) {
 	return cards[randInt(0, cards.length)];
 }
 
-function getCardList(callback) {
+function getCardList() {
 	return new Promise((resolve, reject) => {
 		$.getJSON("https://www.ygohub.com/api/all_cards", function(data) {
 			resolve(data["cards"]);
 		})
 	});
-}
-
-/* function randomID(cards) {
-	return new Promise((resolve, reject) => {
-		//this syntax is basically the long way of using "await". This is helpful: https://stackoverflow.com/questions/46159415/await-promises-all-syntaxerror
-		var card = getCard(randomCardName(cards)).then((card) => resolve(card["number"]));
-	});
-} */
-
-async function randomID(cards) {
-	var card = await randomCard(cards);
-	return card["number"];
 }
 
 function randomCard(cards) {
@@ -62,7 +50,6 @@ async function createDeckContent() {
 	var cards = await getCardList();
 	var content = "#created by random chance at towerhufham.com\n#main\n";
 	for (var i = 0; i < 40; i++) {
-		//var id = await randomID(cards);
 		var id = await randomMainDeckID(cards);
 		content += id + "\n";
 	}
@@ -88,16 +75,4 @@ function init() {
 		console.log(content);
 		download("random-deck.ydk", content);
 	});
-	
-	//async kiddie-pool
-	// function getTextSlowly(text) {
-		// return new Promise((resolve, reject) => {
-			// setTimeout(function() {resolve(text+"...");}, 2000);
-		// });
-	// }
-	// async function doIt() {
-		// var p = await getTextSlowly("did it work?");
-		// console.log(p);
-	// }
-	// doIt();
 }
