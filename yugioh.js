@@ -28,24 +28,31 @@ function getRelatedCards(card) {
 	//this regex gets all text withtin (and including) quotes, which is used in card text to refer to archeytpes and specific cards
 	var matches = card["text"].match(/"(.*?)"/g);
 	var related  = [];
+	console.log("Found these quotes: "+matches);
 	//if there were any quotes
 	if (matches) {
-		//check every match (we skip matches[0], as it's the match itself instead of a captured part of the match)
-		for (var i = 1; i < matches.length; i++) {
+		console.log("matches == true, length of matches is "+matches.length);
+		for (var i = 0; i < matches.length; i++) {
 			//remove the quotes from the match
+			console.log("The current match: "+matches[i]);
 			var match = matches[i].replace(/"/g, "");
 			//if remove "(s)" from the match
+			console.log("Then: "+match);
 			var match = match.replace(/\(s\)/g, "");
+			console.log("Then: "+match);
 			//cards refer to themselves within quotes, which we don't want
 			//tokens are also referred to with quotes, which we don't want either
 			if (match != card["name"] && !(match.includes("Token"))) {
+				console.log("Pushing "+match);
 				related.push(match);
+			}
+			if (match == card["name"]) {
+				console.log("didn't push because it's == to it's name, "+card["name"]);
 			}
 		}
 	}
 	//remove all duplicate references by converting to a set and back
 	related = Array.from(new Set(related));
-	//console.log(related);
 	return related;
 }
 
@@ -101,7 +108,7 @@ async function randomRelatedCard(cards, related) {
 		if (isValid(card)) {
 			console.log("Searched for "+related+", got "+card["name"]+", id="+card["number"]+".");
 			var newRelated = getRelatedCards(card);
-			return {id:card["number"]};
+			return {id:card["number"], related:newRelated};
 		}
 	}
 	//for now, if the card is invalid just call it a loss and get a random card. TODO make this better maybe?
@@ -144,11 +151,13 @@ async function createDeckContent() {
 			removeValue(avalibleSlots, i);
 			//put the related words in random unused spots in the decklist
 			var related = card.related;
-			for (var j = 0; j < related.length; j++) {
-				var index = avalibleSlots[randInt(0, avalibleSlots.length)]
-				removeValue(avalibleSlots, index);
-				decklist[index] = related[j];
-				//console.log("Current decklist: "+decklist);
+			if (related) {
+				for (var j = 0; j < related.length; j++) {
+					console.log("Found related cards: "+related);
+					var index = avalibleSlots[randInt(0, avalibleSlots.length)]
+					removeValue(avalibleSlots, index);
+					decklist[index] = related[j];
+				}
 			}
 		//if decklist[i] is text, search for it in related cards
 		} else if (isNaN(decklist[i])) {
@@ -161,13 +170,14 @@ async function createDeckContent() {
 			var related = card.related;
 			if (related) {
 				for (var j = 0; j < related.length; j++) {
+					console.log("Found related cards: "+related);
 					var index = avalibleSlots[randInt(0, avalibleSlots.length)]
 					removeValue(avalibleSlots, index);
 					decklist[index] = related[j];
-					console.log("Current decklist: "+decklist);
 				}
 			}
 		}
+		console.log("Current decklist: "+decklist);
 	}
 	//create content string
 	var content = "#created by random chance at towerhufham.com\n#main\n";
