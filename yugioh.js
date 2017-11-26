@@ -57,9 +57,14 @@ function getRelatedCards(card) {
 }
 
 function isValid(card) {
+	//check if card even exists
 	if (!(typeof card === "undefined")) {
+		//check if card is main deck and has an id
 		if (!(card["is_extra_deck"] || isNaN(card["number"]))) {
-			return true;
+			//check legality
+			if (card["legality"]["TCG"]["Advanced"] != "Forbidden" || card["legality"]["OCG"]["Advanced"] != "Forbidden") {
+				return true;
+			}
 		}
 	}
 	return false;
