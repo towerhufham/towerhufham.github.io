@@ -184,6 +184,15 @@ async function createDeckContent() {
 		}
 		console.log("Current decklist: "+decklist);
 	}
+	
+	//FAILSAFE: if we don't have 40 cards, fill the rest of the slots with mirror forces :D
+	for (var i = 0; i < 40; i++) {
+		if (!(decklist[i])) {
+			console.log("Found an unfilled slot, adding mirror force");
+			decklist[i] = "44095762"; //mirror force id
+		}
+	}
+	
 	//create content string
 	var content = "#created by random chance at towerhufham.com\n#main\n";
 	for (var i = 0; i < 40; i++) {
