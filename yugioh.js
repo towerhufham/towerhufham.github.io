@@ -36,6 +36,16 @@ async function randomMainDeckID(cards) {
 	while (!(isValid(card))) {
 		card = await randomCard(cards);
 	}
+	
+	//check for related cards
+	var matches = card["text"].match(/"(.*?)"/);
+	if (matches) {
+		//TODO: make this check for multiple matches
+		if (matches[1] != card["name"] && !(matches[1].includes("Token"))) {
+			console.log(matches[1]);
+		}
+	}
+	
 	return card["number"]
 }
 	
