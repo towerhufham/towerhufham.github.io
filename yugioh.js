@@ -62,7 +62,7 @@ function isValid(card) {
 		//check if card is main deck and has an id
 		if (!(card["is_extra_deck"] || isNaN(card["number"]))) {
 			//check legality
-			if (card["legality"]["TCG"]["Advanced"] != "Forbidden" || card["legality"]["OCG"]["Advanced"] != "Forbidden") {
+			if (card["legality"]["TCG"]["Advanced"] != "Forbidden" && card["legality"]["OCG"]["Advanced"] != "Forbidden") {
 				return true;
 			}
 		}
