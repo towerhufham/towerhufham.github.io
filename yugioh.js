@@ -1,3 +1,6 @@
+//set this flag to true to get console logs of what the algorithm is doing
+var VERBOSE = false;
+
 function randInt(min, max) {
 	//todo: implement seeding
 	return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -28,26 +31,24 @@ function getRelatedCards(card) {
 	//this regex gets all text withtin (and including) quotes, which is used in card text to refer to archeytpes and specific cards
 	var matches = card["text"].match(/"(.*?)"/g);
 	var related  = [];
-	console.log("Found these quotes: "+matches);
+	if (VERBOSE) {console.log("Found these quotes: "+matches);}
 	//if there were any quotes
 	if (matches) {
-		console.log("matches == true, length of matches is "+matches.length);
+		if (VERBOSE) {console.log("matches == true, length of matches is "+matches.length);}
 		for (var i = 0; i < matches.length; i++) {
 			//remove the quotes from the match
-			console.log("The current match: "+matches[i]);
+			if (VERBOSE) {console.log("The current match: "+matches[i]);}
 			var match = matches[i].replace(/"/g, "");
 			//if remove "(s)" from the match
-			console.log("Then: "+match);
 			var match = match.replace(/\(s\)/g, "");
-			console.log("Then: "+match);
 			//cards refer to themselves within quotes, which we don't want
 			//tokens are also referred to with quotes, which we don't want either
 			if (match != card["name"] && !(match.includes("Token"))) {
-				console.log("Pushing "+match);
+				if (VERBOSE) {console.log("Pushing "+match);}
 				related.push(match);
 			}
 			if (match == card["name"]) {
-				console.log("didn't push because it's == to it's name, "+card["name"]);
+				if (VERBOSE) {console.log("didn't push because it's == to it's name, "+card["name"]);}
 			}
 		}
 	}
@@ -106,18 +107,18 @@ async function randomRelatedCard(cards, related) {
 				var card = await getCard(name);
 			} else {
 				//if we get here, we've exhausted all possibilities
-				console.log("Exhausted all possibilities");
+				if (VERBOSE) {console.log("Exhausted all possibilities");}
 				break;
 			}
 		}
 		if (isValid(card)) {
-			console.log("Searched for "+related+", got "+card["name"]+", id="+card["number"]+".");
+			if (VERBOSE) {console.log("Searched for "+related+", got "+card["name"]+", id="+card["number"]+".");}
 			var newRelated = getRelatedCards(card);
 			return {id:card["number"], related:newRelated};
 		}
 	}
 	//for now, if the card is invalid just call it a loss and get a random card. TODO make this better maybe?
-	console.log("Searched for "+related+", couldn't find anything valid.");
+	if (VERBOSE) {console.log("Searched for "+related+", couldn't find anything valid.");}
 	return randomMainDeckID(cards);
 }
 	
@@ -158,7 +159,7 @@ async function createDeckContent() {
 			var related = card.related;
 			if (related) {
 				for (var j = 0; j < related.length; j++) {
-					console.log("Found related cards: "+related);
+					if (VERBOSE) {console.log("Found related cards: "+related);}
 					var index = avalibleSlots[randInt(0, avalibleSlots.length)]
 					removeValue(avalibleSlots, index);
 					decklist[index] = related[j];
@@ -167,7 +168,7 @@ async function createDeckContent() {
 		//if decklist[i] is text, search for it in related cards
 		} else if (isNaN(decklist[i])) {
 			//get related card
-			console.log("Looking for related cards, i="+i+".");
+			if (VERBOSE) {console.log("Looking for related cards, i="+i+".");}
 			var card = await randomRelatedCard(cards, decklist[i]);
 			//write the id to this slot (don't have to remove from avalibleSlots because it has already been remove)
 			decklist[i] = card.id;
@@ -175,19 +176,20 @@ async function createDeckContent() {
 			var related = card.related;
 			if (related) {
 				for (var j = 0; j < related.length; j++) {
-					console.log("Found related cards: "+related);
+					if (VERBOSE) {console.log("Found related cards: "+related);}
 					var index = avalibleSlots[randInt(0, avalibleSlots.length)]
 					removeValue(avalibleSlots, index);
 					decklist[index] = related[j];
 				}
 			}
 		}
-		console.log("Current decklist: "+decklist);
+		if (VERBOSE) {console.log("Current decklist: "+decklist);}
 	}
 	
 	//FAILSAFE: if we don't have 40 cards, fill the rest of the slots with mirror forces :D
 	for (var i = 0; i < 40; i++) {
 		if (!(decklist[i])) {
+			//we want to log this even if we aren't being verbose
 			console.log("Found an unfilled slot, adding mirror force");
 			decklist[i] = "44095762"; //mirror force id
 		}
