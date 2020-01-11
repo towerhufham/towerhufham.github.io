@@ -25,7 +25,7 @@ $(document).ready(function() {
 	
 	$("#form").submit(function() {
 		var str = $("#playerInput").val();
-		writeMessage(str);
+		writeMessage("> " + str);
 		$("#playerInput").val("");
 		return false;
 	});
