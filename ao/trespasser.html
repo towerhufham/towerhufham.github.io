@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<style>
+body {
+  background-color: black;
+  background-image: radial-gradient(
+    rgba(0, 10, 20, 0.75), black 120%
+  );
+  white-space: pre-line;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  padding: 2rem;
+  color: white;
+  font: 1.3rem Inconsolata, monospace;
+  text-shadow: 0 0 3px #C8C8C8;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(black, 0.15),
+      rgba(black, 0.15) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+    pointer-events: none;
+  }
+}
+::selection {
+  background: #0080FF;
+  text-shadow: none;
+}
+pre {
+  margin: 0;
+}
+		</style>
+	</head>
+	<body>
+		<h1>TRESPASSER</h1>
+		<p id="main"></p>
+		<form id="form">
+			<input id="playerInput" type="text"></input>
+			<input type="submit" style="display: none" />
+		</form>
+		<script src="trespasser.js"></script>
+	</body>
+</html>
