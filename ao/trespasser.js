@@ -73,7 +73,7 @@ function handleInput(str) {
 		}
 		if (str === "ready") {
 			writeMessage("Yeah, you're ready now. But this is a game. When the time comes, do you think you could do it?");
-			writeMessage("Would you try to say a cool line, like you do to show off to your online friends? \"never come here again. i'll shoot you through the head.\" I'm sure that'll calm your nerves.");
+			writeMessage("Would you try to say a cool line, like you do to show off to your online friends? \"never come here again. i'll shoot you throgh the head.\" I'm sure that'll calm your nerves.");
 			writeMessage("Would you pull the fucking trigger, or would you freeze up completely?");
 			writeMessage("Surely, as he's demonstrated, killing someone isn't so hard right? You should think about that.");
 			writeMessage("I'm dead serious. Pull the fucking [trigger].");
