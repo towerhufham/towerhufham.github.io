@@ -31,7 +31,7 @@ function handleInput(str) {
 			writeMessage("There are about eight letters addressed to him. I imagine they're full of cash, probably dusted with cocaine. Take every penny.");
 		}
 		if (str === "laptop") {
-			writeMessage("I bet you could search it for hours and not find a damn thing about AvengerOnline. I doubt he even knows what it looks like. Yet, he has it all right there.");
+			writeMessage("I bet you could search it for hours and not find a damn thing about AvengerOnline. I doubt he even knows what it looks like. Yet, he has it all in his hands, right here.");
 		}
 		if (str === "bedroom") {
 			writeMessage("In his bedroom is a [bed], a [closet], and a door to his [bathroom].");
@@ -75,12 +75,13 @@ function handleInput(str) {
 			writeMessage("Yeah, you're ready now. But this is a game. When the time comes, do you think you could do it?");
 			writeMessage("Would you try to say a cool line, like you do to show off to your online friends? \"never come here again. i'll shoot you throgh the head.\" I'm sure that'll calm your nerves.");
 			writeMessage("Would you pull the fucking trigger, or would you freeze up completely?");
-			writeMessage("Surely, as he's demonstrated, killing someone isn't so hard right? You should think about that.");
+			writeMessage("Surely, as he's demonstrated, killing someone isn't so hard, right? You should think about that.");
 			writeMessage("I'm dead serious. Pull the fucking [trigger].");
 		}
 		if (str === "trigger") {
 			writeMessage("386 VERNON STREET DAVENPORT, IA 52804.");
 			writeMessage("He's always home after 7 PM. Good luck.");
+			$("#playerInput").hide();
 			place = "end";
 		}
 	}
@@ -90,9 +91,9 @@ function handleInput(str) {
 $(document).ready(function() {
 	$("#playerInput").focus();
 	writeMessage("You found it.");
-	writeMessage("After what happened, I couldn't sleep for days. All I could do was try to figure out where we fucked up. I think it might have been here.");
-	writeMessage('We made this game, "Ultimate Trespasser", that kicked off our whole "careers". I decided it could use a bit of fixing up.');
-	writeMessage("I'll let you be the judge of how we should go from here. Type \"ready\" when you're ready.")
+	writeMessage("After what happened, I couldn't sleep for days. All I could do was try to figure out where we fucked up. I think it might have been around here.");
+	writeMessage('A long time ago, we made this game, Ultimate Trespasser. It kicked off our whole "careers". In retrospect, I decided it could use a bit of fixing up.');
+	writeMessage("I'll let you be the judge of where we all should go from here. Type \"ready\" when you're ready.")
 	
 	$("#form").submit(function() {
 		var str = $("#playerInput").val();
