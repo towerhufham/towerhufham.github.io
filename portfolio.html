@@ -20,20 +20,41 @@
   
   <style>
 	body {
-		background-image: linear-gradient(#b4c292, #736f4e);
+		background-image: linear-gradient(#57e2e5, #dbd8f0);
 	}
 	.infoblock {
 		
 	}
 	.infoblock-l {
-		background-color: rgba(255,150,150,0.5);
+		background-color: rgba(245,100,118,0.5);
 	}
 	.infoblock-r {
-		background-color: rgba(150,150,255,0.5);
+		background-color: rgba(0,141,213,0.5);
 	}
-	.albumblock {
-		background-color: rgba(255,255,150,0.5);
+	.albumblock-deprecated {
+		background-color: rgba(69,203,133,0.5);
 	}
+	.albumcard {
+		width: 400px;
+		background-color: rgba(255,255,255,0.3);
+	}
+	/*
+	.albumcard-zoomin {
+		animation-name: albumcard-ani;
+		animation-duration: 1s;
+		animation-fill-mode: forwards;
+	}
+	.albumcard-zoomout {
+		animation-name: albumcard-ani;
+		animation-duration: 1s;
+		animation-direction: reverse;
+		animation-fill-mode: forwards;
+	}
+	@keyframes albumcard-ani {
+		from {width: 400px;}
+		to {width: 100%;}
+	}
+	*/
   </style>
 </head>
 
@@ -43,12 +64,12 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 
 
-<div class="container-fluid text-center">
+<div class="container text-center">
 	<h1>Album Art / Graphic Design Portfolio</h1>
 	<p>HI i do weird stuff with colors nad numbers hire mE!!!!!!!!!!!</p>
 </div>
 
-<div class="container-fluid text-center">
+<div class="container text-center">
 	<div class="row">
 		<div class="col infoblock infoblock-l">
 			<p>full LP art with backs and lyric sheets and the such</p>
@@ -60,13 +81,146 @@
 	</div>
 </div>
 
-<div class="container-fluid text-center albumblock">
+<div class="container text-center">
 	<p>albume arts go HERE!!!!!!!! N>?:@#</p>
+	<div class="row card-deck justify-content-center">
+		<div class="card albumcard">
+			<img class="card-img-top" src="img/portfolio/Watson Concoction.png">
+			<div class="card-body">
+				<h4 class="card-title">Watson Concotion (2020)</h4>
+				<a class="stretched-link" data-bs-toggle="modal" data-bs-target="#ZoomInModal" data-bs-src="img/portfolio/Watson Concoction.png"></a>
+			</div>
+		</div>
+		<div class="card albumcard">
+			<img class="card-img-top" src="img/portfolio/====.png">
+			<div class="card-body">
+				<h4 class="card-title">==*****== (2020)</h4>
+				<a class="stretched-link" data-bs-toggle="modal" data-bs-target="#ZoomInModal" data-bs-src="img/portfolio/====.png"></a>
+			</div>
+		</div>
+		<div class="card albumcard">
+			<img class="card-img-top" src="img/portfolio/Super Book.png">
+			<div class="card-body">
+				<h4 class="card-title">Super Book (2020)</h4>
+				<a class="stretched-link" data-bs-toggle="modal" data-bs-target="#ZoomInModal" data-bs-src="img/portfolio/Super Book.png"></a>
+			</div>
+		</div>
+		<div class="card albumcard">
+			<img class="card-img-top" src="img/portfolio/273.9.png">
+			<div class="card-body">
+				<h4 class="card-title">273.9° (2020)</h4>
+				<a class="stretched-link" data-bs-toggle="modal" data-bs-target="#ZoomInModal" data-bs-src="img/portfolio/273.9.png"></a>
+			</div>
+		</div>
+		<div class="card albumcard">
+			<img class="card-img-top" src="img/portfolio/BOOK OF KAIJ.png">
+			<div class="card-body">
+				<h4 class="card-title">BOOK OF KAIJ (2020)</h4>
+				<a class="stretched-link" data-bs-toggle="modal" data-bs-target="#ZoomInModal" data-bs-src="img/portfolio/BOOK OF KAIJ.png"></a>
+			</div>
+		</div>
+		<div class="card albumcard">
+			<img class="card-img-top" src="img/portfolio/ICOSAHEDRON DETOUR.jpg">
+			<div class="card-body">
+				<h4 class="card-title">ICOSAHEDRON DETOUR (2019)</h4>
+				<a class="stretched-link" data-bs-toggle="modal" data-bs-target="#ZoomInModal" data-bs-src="img/portfolio/ICOSAHEDRON DETOUR.jpg"></a>
+			</div>
+		</div>
+		<div class="card albumcard">
+			<img class="card-img-top" src="img/portfolio/Infinite Complexity.png">
+			<div class="card-body">
+				<h4 class="card-title">Infinite Complexity (2016)</h4>
+				<a class="stretched-link" data-bs-toggle="modal" data-bs-target="#ZoomInModal" data-bs-src="img/portfolio/Infinite Complexity.png"></a>
+			</div>
+		</div>
+		<div class="card albumcard">
+			<img class="card-img-top" src="img/portfolio/If Only You Knew.png">
+			<div class="card-body">
+				<h4 class="card-title">If Only You Knew Where You'd be in 100 Years (2016)</h4>
+				<a class="stretched-link" data-bs-toggle="modal" data-bs-target="#ZoomInModal" data-bs-src="img/portfolio/If Only You Knew.png"></a>
+			</div>
+		</div>
+		<div class="card albumcard">
+			<img class="card-img-top" src="img/portfolio/Rooms At The Top.png">
+			<div class="card-body">
+				<h4 class="card-title">Rooms at the Top (2016)</h4>
+				<a class="stretched-link" data-bs-toggle="modal" data-bs-target="#ZoomInModal" data-bs-src="img/portfolio/Rooms At The Top.png"></a>
+			</div>
+		</div>
+		<div class="card albumcard">
+			<img class="card-img-top" src="img/portfolio/Occasionally Useful.png">
+			<div class="card-body">
+				<h4 class="card-title">Occasionally Useful (2016)</h4>
+				<a class="stretched-link" data-bs-toggle="modal" data-bs-target="#ZoomInModal" data-bs-src="img/portfolio/Occasionally Useful.png"></a>
+			</div>
+		</div>
+		<div class="card albumcard">
+			<img class="card-img-top" src="img/portfolio/MXXIV.png">
+			<div class="card-body">
+				<h4 class="card-title">MXXIV (2016)</h4>
+				<a class="stretched-link" data-bs-toggle="modal" data-bs-target="#ZoomInModal" data-bs-src="img/portfolio/MXXIV.png"></a>
+			</div>
+		</div>
+		<div class="card albumcard">
+			<img class="card-img-top" src="img/portfolio/Slightly Less Than Infinity.png">
+			<div class="card-body">
+				<h4 class="card-title">Slightly Less Than Infinity (2016)</h4>
+				<a class="stretched-link" data-bs-toggle="modal" data-bs-target="#ZoomInModal" data-bs-src="img/portfolio/Slightly Less Than Infinity.png"></a>
+			</div>
+		</div>
+	</div>
 </div>
 
 <div class="container-fluid text-center">
 	<p>ok bye</p>
 </div>
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ZoomInModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="ZoomInModal" tabindex="-1" aria-labelledby="ZoomInModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+	    <h5 class="modal-title" id="ZoomInModalLabel">Zoom-In</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img class="img-fluid" id="ZoomImg" src="">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+//zoom in
+/*
+$(".albumcard").click(function() {
+	if ($(this).hasClass("albumcard-zoomin")) {
+		//zoom out
+		$(this).removeClass("albumcard-zoomin");
+		$(this).addClass("albumcard-zoomout");
+	} else {
+		//zoom in
+		$(this).removeClass("albumcard-zoomout");
+		$(this).addClass("albumcard-zoomin");
+	};
+});
+*/
+
+//zoom in modal
+var zoomModal = document.getElementById("ZoomInModal");
+zoomModal.addEventListener("show.bs.modal", function(event) {
+	var button = event.relatedTarget;
+	var recipient = button.getAttribute("data-bs-src");
+	$("#ZoomImg").attr("src", recipient);
+});
+</script>
 
 </body>
 </html>
