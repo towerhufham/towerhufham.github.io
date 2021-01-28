@@ -1,145 +1,196 @@
 <!DOCTYPE html>
-<html manifest="main_cache.appcache">
+<html>
 
 <head>
 	<meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-	<meta name="description" content="Directory for the projects created by Tower Hufham">
-	<meta name="keywords" content="Art,Code,Tower,Games,Procedural,Generative">
+	<meta name="description" content="Tower's Portfolio">
+	<meta name="keywords" content="Art,Music,Graphic Design,Tower,Tower Hufham,Commissions,Album Art">
 	<meta name="author" content="Tower Hufham">
-	
+
 	<!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
 	
-	<title>Tower Hufham</title>
+	<title>Tower's Portfolio</title>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-
-	<link rel="shortcut icon" href="favicon.ico"></link>
-
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet"> 
+	  
 	<style>
 		body {
-			font-family: 'Open Sans', sans-serif;
-			text-align: center;
-			color: #ffffff;
-			text-shadow: 2px 2px 8px #000000
+			background: rgb(255,220,89);
+			background: linear-gradient(175deg, rgba(255,220,89,1) 20%, rgba(82,224,187,1) 100%);
+			font-family: 'Montserrat', sans-serif;
 		}
-		p {
-			font-size: 125%;
+
+		.biobox {
+			
 		}
-		h1 {
-			font-size: 350%;
+
+		.infoblock {
+			background-color: rgba(255,255,255,0.4);
 		}
-		h2 {
-			font-size: 240%;
+
+		/*
+		.infoblock-l {
+			background-color: rgba(245,100,118,0.5);
 		}
-		h3 {
-			font-size: 150%;
+		.infoblock-r {
+			background-color: rgba(0,141,213,0.5);
 		}
-		.vertical-align {
-			display: flex;
-			align-items: center;
-			flex-wrap: wrap
+		*/
+
+		.albumblock-deprecated {
+			background-color: rgba(69,203,133,0.5);
 		}
-		a {
-			color: yellow;
-		}
-		.btn-link {
-			/* box-shadow: 0px 0px 1px #000000; */
+		.albumcard {
+			width: 400px;
+			background-color: rgba(255,255,255,0.3);
 		}
 	</style>
 </head>
 
-<body background="img/pool_bg.jpg">
-
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 
-<h1>Tower Hufham</h1>
-<h3>Programming, design, and tomfoolery.</h3>
 
-<div class="container">
-	<div class="row vertical-align">
-		<div class="col-sm-6">
-			<p>Welcome to my website. I don't really know what I'm doing, but I hope you like it anyway.
-			Take a seat, relax, and enjoy this procedurally generated artwork, on the house.</p>
+<div class="container text-center mt-5">
+	<img class="img-fluid" src="img/portfolio/Hero Image.png">
+</div>
+
+<div class="container text-center my-5 biobox">
+	<h1><b>Hi.</b></h1>
+	<p>My name is Tower. I do graphic design and creative programming, often both at the same time. This page should give you an idea of the kind of things that I like to make. Everything on this site is designed by me, including the actual code of the website itself. If you are interested in commissioning me for album art, book covers, website design, or anything else; please don't hesitate to get in touch!<p>
+</div>
+
+<div class="container text-center my-5">
+	<div class="row">
+		<div class="col infoblock infoblock-l py-4">
+			<p>This (will be) an example of my art being used as a physical double-LP album cover.</p>
+			<img style="height: 324px; width: 324px;" src="img/portfolio/placeholder.jpg"></img>
 		</div>
-		<div class="col-sm-6">
+		
+		<div class="col infoblock infoblock-r py-4">
+			<p>This is a random art generator I made. Click or tap to make a new one!</p>
 			<canvas id="artCanvas" width="324" height="324" style="border:1px solid #000000;"></canvas>
 		</div>
 	</div>
 </div>
 
-<div class="container">
-  <!-- <h3>Links to stuff.</h3> -->
-  <div class="row vertical-align">
-    <div class="col-sm-4">
-      <a href="https://ello.co/qubitforest" class="btn btn-link">
-	    <img src="img/qubitforest_logo.png" class="img-responsive center-block" alt="Qubitforest">
-	  </a>
-	  <p><br/><h3>Qubitforest</h3></p>
-	  <p>A collection of art I've made.</p>
-    </div>
-	<div class="col-sm-4">
-      <a href="https://github.com/towerhufham" class="btn btn-link">
-	    <img src="img/code_logo.png" class="img-responsive center-block" alt="Code">
-	  </a>
-	  <p><br/><h3>Code</h3></p>
-	  <p>Link to my github.</p>
-    </div>
-	<div class="col-sm-4">
-	  <a href="digimon.html" class="btn btn-link">
-	    <img src="img/digimon_logo_crunchy.png" class="img-responsive center-block" alt="Digimon">
-	  </a>
-	  <p><br/><h3>Digimon</h3></p>
-	  <p>Generate new Digimon!</p>
-    </div>
-  </div>
-  
-  <div class="row vertical-align">
-	<div class="col-sm-3">
-      <a href="https://towerhufham.itch.io/chromawarp" class="btn btn-link">
-	    <img src="img/chromawarp_icon.png" class="img-responsive center-block" alt="Chromawarp">
-	  </a>
-	  <p><br/><h3>Chromawarp</h3></p>
-	  <p>A tiny but unique platformer game that runs in the web, made for <a href=https://ldjam.com/>Ludum Dare</a> 35.</P>
-    </div>
-	<div class="col-sm-3">
-      <a href="https://sourceforge.net/projects/nethackmodern/" class="btn btn-link">
-	    <img src="img/lorc_cursed_star.png" class="img-responsive center-block" alt="Nethack Modern">
-	  </a>
-	  <p><br/><h3>Nethack Modern</h3></p>
-	  <p>High-resolution vector-based <a href=https://www.nethack.org/>Nethack</a> textures made with assets from <a href=http://www.game-icons.net>game-icons.net.</a></p>
-    </div>
-	<div class="col-sm-3">
-      <a href="yugioh.html" class="btn btn-link">
-	    <img src="img/yugioh_icon.png" class="img-responsive center-block" alt="Yugioh Deck Generator">
-	  </a>
-	  <p><br/><h3 style="color:#bbbbbb">Yu-Gi-Oh! Deck Generator (BROKEN)</h3></p>
-	  <p style="color:#bbbbbb">Generates a (bad) Yu-Gi-Oh! deck for use in ygoPro or devPro. (Currently down due to API.)</p>
-    </div>
-	<div class="col-sm-3">
-		  <a href="pond-scum/pond-scum.html" class="btn btn-link">
-			<img src="img/pond-scum_logo.png" class="img-responsive center-block" alt="Pond Scum">
-		  </a>
-		  <p><br/><h3>Pond Scum</h3></p>
-		  <p>A small visual project for FNA-102.</p>
-	   </div>
+<div class="container text-center pt-4">
+	<p>Some of my best work: (click to zoom-in)</p>
+	<div class="row card-deck justify-content-center">
+		<div class="card albumcard">
+			<img class="card-img-top" src="img/portfolio/thumbs/And Yet You Remain.jpg">
+			<div class="card-body">
+				<h4 class="card-title">And Yet You Remain (Album Art, 2021)</h4>
+				<a class="stretched-link" data-bs-toggle="modal" data-bs-target="#ZoomInModal" data-bs-src="img/portfolio/And Yet You Remain.png"></a>
+			</div>
+		</div>
+		<div class="card albumcard">
+			<img class="card-img-top" src="img/portfolio/thumbs/Convergence of a.jpg">
+			<div class="card-body">
+				<h4 class="card-title">Convergence of ⎃ (Album Art, 2021)</h4>
+				<a class="stretched-link" data-bs-toggle="modal" data-bs-target="#ZoomInModal" data-bs-src="img/portfolio/Convergence of a.png"></a>
+			</div>
+		</div>
+		<div class="card albumcard">
+			<img class="card-img-top" src="img/portfolio/thumbs/Watson Concoction.jpg">
+			<div class="card-body">
+				<h4 class="card-title">Watson Concotion (Fanart, 2020)</h4>
+				<a class="stretched-link" data-bs-toggle="modal" data-bs-target="#ZoomInModal" data-bs-src="img/portfolio/Watson Concoction.png"></a>
+			</div>
+		</div>
+		<div class="card albumcard">
+			<img class="card-img-top" src="img/portfolio/thumbs/====.jpg">
+			<div class="card-body">
+				<h4 class="card-title">==*****== (Album Art, 2020)</h4>
+				<a class="stretched-link" data-bs-toggle="modal" data-bs-target="#ZoomInModal" data-bs-src="img/portfolio/====.png"></a>
+			</div>
+		</div>
+		<div class="card albumcard">
+			<img class="card-img-top" src="img/portfolio/thumbs/Super Book.jpg">
+			<div class="card-body">
+				<h4 class="card-title">Super Book (Album Art, 2020)</h4>
+				<a class="stretched-link" data-bs-toggle="modal" data-bs-target="#ZoomInModal" data-bs-src="img/portfolio/Super Book.png"></a>
+			</div>
+		</div>
+		<div class="card albumcard">
+			<img class="card-img-top" src="img/portfolio/QQQQ.png">
+			<div class="card-body">
+				<h4 class="card-title">QQQQ (Novel Cover, 2020)</h4>
+				<a class="stretched-link" data-bs-toggle="modal" data-bs-target="#ZoomInModal" data-bs-src="img/portfolio/QQQQ.png"></a>
+			</div>
+		</div>
+		<div class="card albumcard">
+			<img class="card-img-top" src="img/portfolio/thumbs/Rooms At The Top.jpg">
+			<div class="card-body">
+				<h4 class="card-title">Rooms at the Top (2016)</h4>
+				<a class="stretched-link" data-bs-toggle="modal" data-bs-target="#ZoomInModal" data-bs-src="img/portfolio/Rooms At The Top.png"></a>
+			</div>
+		</div>
+		<div class="card albumcard">
+			<img class="card-img-top" src="img/portfolio/thumbs/Occasionally Useful.jpg">
+			<div class="card-body">
+				<h4 class="card-title">Occasionally Useful (2016)</h4>
+				<a class="stretched-link" data-bs-toggle="modal" data-bs-target="#ZoomInModal" data-bs-src="img/portfolio/Occasionally Useful.png"></a>
+			</div>
+		</div>
+		<div class="card albumcard">
+			<img class="card-img-top" src="img/portfolio/thumbs/Slightly Less Than Infinity.jpg">
+			<div class="card-body">
+				<h4 class="card-title">Slightly Less Than Infinity (2016)</h4>
+				<a class="stretched-link" data-bs-toggle="modal" data-bs-target="#ZoomInModal" data-bs-src="img/portfolio/Slightly Less Than Infinity.png"></a>
+			</div>
+		</div>
+		<div class="card albumcard">
+			<img class="card-img-top" src="img/portfolio/thumbs/Infinite Complexity.jpg">
+			<div class="card-body">
+				<h4 class="card-title">Infinite Complexity (2016)</h4>
+				<a class="stretched-link" data-bs-toggle="modal" data-bs-target="#ZoomInModal" data-bs-src="img/portfolio/Infinite Complexity.png"></a>
+			</div>
+		</div>
 	</div>
+</div>
+
+<div class="container-fluid text-center">
+	<p class="my-4">ok bye ♡</p>
+</div>
+
+<!-- Zoom In Modal -->
+<div class="modal fade" id="ZoomInModal" tabindex="-1" aria-labelledby="ZoomInModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+	    <h5 class="modal-title" id="ZoomInModalLabel">Zoom-In</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center justify-content-center">
+        <img class="img-fluid" id="ZoomImg" src="">
+      </div>
+    </div>
   </div>
+</div>
 
-
-</body>
-
+<script>
+//zoom in modal
+var zoomModal = document.getElementById("ZoomInModal");
+zoomModal.addEventListener("show.bs.modal", function(event) {
+	var button = event.relatedTarget;
+	var recipient = button.getAttribute("data-bs-src");
+	$("#ZoomImg").attr("src", recipient);
+});
+</script>
 
 <script type="text/javascript" src="noisejs-master/perlin.js"></script>
 
 <script>
-
 var canvas = document.getElementById("artCanvas");
 var ctx = canvas.getContext("2d");
 
@@ -210,8 +261,7 @@ function loadArt() {
 	canvas.addEventListener('click', function() {randomArt()}, false);
 }
 document.addEventListener('DOMContentLoaded', function() {loadArt()}, false);
-//document.addEventListener('DOMContentLoaded', function() {setTimeout(function() {loadArt()}, 2000)}, false);
-
 </script>
 
+</body>
 </html>
