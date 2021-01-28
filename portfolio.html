@@ -3,44 +3,55 @@
 
 <head>
 	<meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-	
+
 	<meta name="description" content="Tower's Portfolio">
 	<meta name="keywords" content="Art,Music,Graphic Design,Tower,Tower Hufham,Commissions,Album Art">
 	<meta name="author" content="Tower Hufham">
-	
+
 	<!-- Bootstrap -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
 	
-  <title>Tower's Portfolio</title>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-  
-  <style>
-	body {
-		/* background-image: linear-gradient(#57e2e5, #dbd8f0); */
-		background: rgb(255,220,89);
-		background: linear-gradient(175deg, rgba(255,220,89,1) 0%, rgba(82,224,187,1) 100%); 
-	}
-	.infoblock {
-		
-	}
-	.infoblock-l {
-		background-color: rgba(245,100,118,0.5);
-	}
-	.infoblock-r {
-		background-color: rgba(0,141,213,0.5);
-	}
-	.albumblock-deprecated {
-		background-color: rgba(69,203,133,0.5);
-	}
-	.albumcard {
-		width: 400px;
-		background-color: rgba(255,255,255,0.3);
-	}
-  </style>
+	<title>Tower's Portfolio</title>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet"> 
+	  
+	<style>
+		body {
+			background: rgb(255,220,89);
+			background: linear-gradient(175deg, rgba(255,220,89,1) 20%, rgba(82,224,187,1) 100%);
+			font-family: 'Montserrat', sans-serif;
+		}
+
+		.biobox {
+			
+		}
+
+		.infoblock {
+			background-color: rgba(255,255,255,0.4);
+		}
+
+		/*
+		.infoblock-l {
+			background-color: rgba(245,100,118,0.5);
+		}
+		.infoblock-r {
+			background-color: rgba(0,141,213,0.5);
+		}
+		*/
+
+		.albumblock-deprecated {
+			background-color: rgba(69,203,133,0.5);
+		}
+		.albumcard {
+			width: 400px;
+			background-color: rgba(255,255,255,0.3);
+		}
+	</style>
 </head>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -53,20 +64,27 @@
 	<img class="img-fluid" src="img/portfolio/Hero Image.png">
 </div>
 
+<div class="container text-center my-5 biobox">
+	<h1><b>Hi.</b></h1>
+	<p>My name is Tower. I do graphic design and creative programming, often both at the same time. This page should give you an idea of the kind of things that I make. Everything on this site is made by me, including the actual code of the website itself. If you are interested in commissioning for album art, book covers, website design, or anything else; please don't hesitate to get in touch!<p>
+</div>
+
 <div class="container text-center my-5">
 	<div class="row">
-		<div class="col infoblock infoblock-l">
-			<p>full LP art with backs and lyric sheets and the such</p>
+		<div class="col infoblock infoblock-l py-4">
+			<p>This (will be) an example of my art being used as a physical double-LP album cover.</p>
+			<img style="height: 324px; width: 324px;" src="img/portfolio/placeholder.jpg"></img>
 		</div>
 		
-		<div class="col infoblock infoblock-r">
-			<p>interactive arty thing</p>
+		<div class="col infoblock infoblock-r py-4">
+			<p>This is a random art generator I made. Click to make a new one!</p>
+			<canvas id="artCanvas" width="324" height="324" style="border:1px solid #000000;"></canvas>
 		</div>
 	</div>
 </div>
 
-<div class="container text-center">
-	<p>Some of my best:</p>
+<div class="container text-center pt-4">
+	<p>Some of my best work: (click to zoom-in)</p>
 	<div class="row card-deck justify-content-center">
 		<div class="card albumcard">
 			<img class="card-img-top" src="img/portfolio/Convergence of a.png">
@@ -177,7 +195,7 @@
 </div>
 
 <div class="container-fluid text-center">
-	<p>ok bye</p>
+	<p class="my-4">ok bye ♡</p>
 </div>
 
 <!-- Zoom In Modal -->
@@ -194,7 +212,6 @@
     </div>
   </div>
 </div>
-
 
 <script>
 //zoom in
@@ -219,6 +236,84 @@ zoomModal.addEventListener("show.bs.modal", function(event) {
 	var recipient = button.getAttribute("data-bs-src");
 	$("#ZoomImg").attr("src", recipient);
 });
+</script>
+
+<script type="text/javascript" src="noisejs-master/perlin.js"></script>
+
+<script>
+
+var canvas = document.getElementById("artCanvas");
+var ctx = canvas.getContext("2d");
+
+function randInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function randomArt() {
+
+	var absolute_size = 342
+	var pixel_size = 2
+	var pixels = absolute_size / pixel_size
+
+	noise.seed(Math.random());
+	ctx.fillStyle="#FFFFFF";
+	ctx.fillRect(0,0,absolute_size,absolute_size);
+
+	//by Tim Down
+	function componentToHex(c) {
+		var hex = c.toString(16);
+		return hex.length == 1 ? "0" + hex : hex;
+	}
+	//by Tim Down
+	function rgbToHex(r, g, b) {
+		return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+	}
+
+	function drawPixel(x, y, color) {
+			ctx.fillStyle=color;
+			ctx.fillRect(x*pixel_size, y*pixel_size, pixel_size, pixel_size);
+	}
+
+	var min_scale = 100
+	var max_scale = 1000
+	 
+	var r1_scale = randInt(min_scale, max_scale)
+	var g1_scale = randInt(min_scale, max_scale)
+	var b1_scale = randInt(min_scale, max_scale)
+
+	var r2_scale = randInt(min_scale, max_scale)
+	var g2_scale = randInt(min_scale, max_scale)
+	var b2_scale = randInt(min_scale, max_scale)
+
+	for (var x = 0; x < pixels; x++) {
+	 for (var y = 0; y < pixels; y++) {
+		// All noise functions return values in the range of -1 to 1.
+		var r1 = noise.simplex2(x / r1_scale, y / r1_scale);
+		r1 = Math.floor(Math.abs(r1) * 255);
+		var g1 = noise.simplex2(x / g1_scale, y / g1_scale);
+		g1 = Math.floor(Math.abs(g1) * 255);
+		var b1 = noise.simplex2(x / b1_scale, y / b1_scale);
+		b1 = Math.floor(Math.abs(b1) * 255);
+		
+		var r2 = noise.simplex2(x / r2_scale, y / r2_scale);
+		r2 = Math.floor(Math.abs(r2) * 255);
+		var g2 = noise.simplex2(x / g2_scale, y / g2_scale);
+		g2 = Math.floor(Math.abs(g2) * 255);
+		var b2 = noise.simplex2(x / b2_scale, y / b2_scale);
+		b2 = Math.floor(Math.abs(b2) * 255);
+		
+		drawPixel(x, y, rgbToHex(r1 ^ r2, g1 ^ g2, b1 ^ b2))
+	  }
+	}
+}
+
+function loadArt() {
+	randomArt();
+	canvas.addEventListener('click', function() {randomArt()}, false);
+}
+document.addEventListener('DOMContentLoaded', function() {loadArt()}, false);
+//document.addEventListener('DOMContentLoaded', function() {setTimeout(function() {loadArt()}, 2000)}, false);
+
 </script>
 
 </body>
