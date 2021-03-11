@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<meta name="description" content="The Hidden Tarot Room">
+	<meta name="keywords" content="">
+	<meta name="author" content="">
+
+	<!-- Bootstrap -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+	
+	<title>The Hidden Tarot Room</title>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet"> 
+	  
+	<style>
+		body {
+			background: rgb(255,220,89);
+			background: linear-gradient(175deg, rgba(255,220,89,1) 20%, rgba(82,224,187,1) 100%);
+			font-family: 'Montserrat', sans-serif;
+		}
+	</style>
+</head>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+<!-- stuff -->
+<div class="container text-center mt-5">
+	<div class="row">
+		<div class="col">
+			<div class="dropdown">
+				  <button class="btn btn-secondary dropdown-toggle" type="button" id="chooseDeckDD" data-bs-toggle="dropdown" aria-expanded="false">
+					Choose Deck
+				  </button>
+				  <ul class="dropdown-menu" aria-labelledby="chooseDeckDD">
+					<li><a class="dropdown-item" href="javascript:void(0);" onclick="changeDeck('rider-waite');">Rider-Waite</a></li>
+					<li><a class="dropdown-item" href="javascript:void(0);" onclick="changeDeck('crowley_thoth');">Thoth</a></li>
+					<li><a class="dropdown-item" href="javascript:void(0);" onclick="changeDeck('liber_t');">Liber-T</a></li>
+					<li><a class="dropdown-item" href="javascript:void(0);" onclick="changeDeck('ananda');">Ananda</a></li>
+					<li><a class="dropdown-item" href="javascript:void(0);" onclick="changeDeck('celestial');">Celestial</a></li>
+					<li><a class="dropdown-item" href="javascript:void(0);" onclick="changeDeck('ceremonial_magic');">Ceremonial Magic</a></li>
+					<li><a class="dropdown-item" href="javascript:void(0);" onclick="changeDeck('elf_of_heaven');">Elf of Heaven</a></li>
+					<li><a class="dropdown-item" href="javascript:void(0);" onclick="changeDeck('navigator');">Navigator</a></li>
+					<li><a class="dropdown-item" href="javascript:void(0);" onclick="changeDeck('sun_and_moon');">Sun and Moon</a></li>
+					<li><a class="dropdown-item" href="javascript:void(0);" onclick="changeDeck('traumzeit');">Traumzeit</a></li>
+				  </ul>
+				</div>
+			</div>
+		<div class="col">
+			<div class="dropdown">
+			  <button class="btn btn-secondary dropdown-toggle" type="button" id="chooseCardDD" data-bs-toggle="dropdown" aria-expanded="false">
+				Choose Card
+			  </button>
+			  <ul class="dropdown-menu" id="chooseCardDDItems">
+				<!-- populated below -->
+			  </ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container text-center mb-5">
+	<img class="img-fluid my-5 shadow-lg" id="bigcard" src="">
+	<h1 id="bigcardname"></h1>
+</div>
+
+<script>
+function toTitleCase(str) {
+    return str.replace(/\w\S*/g, function(txt){
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
+}
+function butNotOf(str) {
+	//because i'm a perfectionist at random things
+	return str.replace(" O", " o")
+}
+
+function changeDeck(str) {
+	deck = str;
+	document.cookie = "lastDeck="+str;
+	$("#bigcard").attr("src", "img/tarot/"+deck+"/"+chosenCard+".jpg");
+}
+
+function changeCard(card) {
+	chosenCard = card;
+	var text = butNotOf(toTitleCase(card.replace(/\_/g, " ")));
+	$("#bigcard").attr("src", "img/tarot/"+deck+"/"+card+".jpg");
+	$("#bigcardname").text(text);
+}
+
+function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i <ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+var deck = "rider-waite";
+if (getCookie("lastDeck")) {
+	deck = getCookie("lastDeck");
+}
+
+var cards = ["ace_of_wands", "2_of_wands", "3_of_wands", "4_of_wands", "5_of_wands", "6_of_wands", "7_of_wands", "8_of_wands", "9_of_wands", "10_of_wands", "ace_of_cups", "2_of_cups", "3_of_cups", "4_of_cups", "5_of_cups", "6_of_cups", "7_of_cups", "8_of_cups", "9_of_cups", "10_of_cups", "ace_of_swords", "2_of_swords", "3_of_swords", "4_of_swords", "5_of_swords", "6_of_swords", "7_of_swords", "8_of_swords", "9_of_swords", "10_of_swords", "ace_of_pentacles", "2_of_pentacles", "3_of_pentacles", "4_of_pentacles", "5_of_pentacles", "6_of_pentacles", "7_of_pentacles", "8_of_pentacles", "9_of_pentacles", "10_of_pentacles", "king_of_wands", "queen_of_wands", "knight_of_wands", "page_of_wands", "king_of_cups", "queen_of_cups", "knight_of_cups", "page_of_cups", "king_of_swords", "queen_of_swords", "knight_of_swords", "page_of_swords", "king_of_pentacles", "queen_of_pentacles", "knight_of_pentacles", "page_of_pentacles", "the_fool", "the_magician", "the_high_priestess", "the_empress", "the_emperor", "the_hierophant", "the_lovers", "the_chariot", "strength", "the_hermit", "the_wheel_of_fortune", "justice", "the_hanged_man", "death", "temperance", "the_devil", "the_tower", "the_star", "the_moon", "the_sun", "judgement", "the_world"];
+
+//populate choose card dropdown
+$("#chooseCardDDItems").empty();
+$.each(cards, function(i, p) {
+	$("#chooseCardDDItems").append($('<li><a class="dropdown-item" href="javascript:void(0);" onclick="changeCard(\''+p+'\');">'+p+'</a></li>'));
+});
+
+var chosenCard = cards[Math.floor(Math.random() * cards.length)];
+changeCard(chosenCard);
+</script>
+
+</body>
+</html>
