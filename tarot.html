@@ -69,7 +69,7 @@
 	</div>
 </div>
 <div class="container text-center mb-5">
-	<img class="img-fluid my-5 shadow-lg" id="bigcard" src="">
+	<img class="img-fluid my-5 shadow-lg" id="bigcard" src="" onclick="randomCard();">
 	<h1 id="bigcardname"></h1>
 </div>
 
@@ -87,14 +87,19 @@ function butNotOf(str) {
 function changeDeck(str) {
 	deck = str;
 	document.cookie = "lastDeck="+str;
-	$("#bigcard").attr("src", "img/tarot/"+deck+"/"+chosenCard+".jpg");
+	changeCard(chosenCard);
 }
 
 function changeCard(card) {
 	chosenCard = card;
 	var text = butNotOf(toTitleCase(card.replace(/\_/g, " ")));
-	$("#bigcard").attr("src", "img/tarot/"+deck+"/"+card+".jpg");
-	$("#bigcardname").text(text);
+	if (card == "back_of_card") {
+		$("#bigcard").attr("src", "img/tarot/"+deck+"/"+card+".png");
+		$("#bigcardname").text("Click to draw a random card");
+	} else {
+		$("#bigcard").attr("src", "img/tarot/"+deck+"/"+card+".jpg");
+		$("#bigcardname").text(text);
+	}
 }
 
 function getCookie(cname) {
@@ -113,6 +118,11 @@ function getCookie(cname) {
   return "";
 }
 
+function randomCard() {
+	var chosenCard = cards[Math.floor(Math.random() * cards.length)];
+	changeCard(chosenCard);
+}
+
 var deck = "liber_t";
 if (getCookie("lastDeck")) {
 	deck = getCookie("lastDeck");
@@ -126,7 +136,7 @@ $.each(cards, function(i, p) {
 	$("#chooseCardDDItems").append($('<li><a class="dropdown-item" href="javascript:void(0);" onclick="changeCard(\''+p+'\');">'+p+'</a></li>'));
 });
 
-var chosenCard = cards[Math.floor(Math.random() * cards.length)];
+var chosenCard = "back_of_card";
 changeCard(chosenCard);
 </script>
 
