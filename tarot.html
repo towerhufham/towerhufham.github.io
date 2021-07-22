@@ -74,14 +74,35 @@
 </div>
 
 <script>
+
+function cardDisplayName(card) {
+	var name = card;
+	//remove underscores
+	name = card.replace(/\_/g, " ");
+	//title case
+	name = toTitleCase(name);
+	//make "of" lowercase
+	name = name.replace(" O", " o");
+	//add roman numeral to major arcana (finally)
+	name = romanNumerals(card) + name;
+	return name;
+}
+
+var numerals = ["0", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX", "XXI"]
+function romanNumerals(name) {
+	var majorIndex = cards.indexOf(name) - 56;
+	if (majorIndex >= 0) {
+		return "(" + String(numerals[majorIndex]) + ") "
+	} else {
+		return ""
+	}
+	
+}
+
 function toTitleCase(str) {
     return str.replace(/\w\S*/g, function(txt){
         return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
     });
-}
-function butNotOf(str) {
-	//because i'm a perfectionist at random things
-	return str.replace(" O", " o")
 }
 
 function changeDeck(str) {
@@ -92,7 +113,7 @@ function changeDeck(str) {
 
 function changeCard(card) {
 	chosenCard = card;
-	var text = butNotOf(toTitleCase(card.replace(/\_/g, " ")));
+	var text = cardDisplayName(card);
 	if (card == "back_of_card") {
 		$("#bigcard").attr("src", "img/tarot/"+deck+"/"+card+".png");
 		$("#bigcardname").text("Click to draw a random card");
